@@ -5,16 +5,36 @@ import {imagePaths} from "./imagePaths.mjs";
 
 const result=document.querySelector('.random-number');
 const myImage=document.querySelector('.random-img');
+
 //Random Number Generator
 result.addEventListener('mouseover',function(){
-  const myRandomNumber=myNumbers[Math.floor(Math.random() * myNumbers.length)];
-  result.innerHTML=myRandomNumber;
+
+  randomNumnerGenerator(myNumbers);
+
 });
 //Random Image Generator
 myImage.addEventListener('mouseover',function(){
-  let myRandomIdex=Math.floor(Math.random() * imagePaths.length);
-  const myRandomImagePath=imagePaths[myRandomIdex][0];
-  const myRandomImageAlt=imagePaths[myRandomIdex][1];
+
+  randomImageGenerator(imagePaths);
+
+});
+
+//Random Number Generator function
+const randomNumnerGenerator= function(arry){
+
+  const myRandomNumber=arry[Math.floor(Math.random() * arry.length)];
+  result.innerHTML=myRandomNumber;
+
+}
+//Random Image Generator function
+const randomImageGenerator= function(myArry){
+
+  let myRandomIdex=Math.floor(Math.random() * myArry.length);
+
+  const myRandomImagePath=myArry[myRandomIdex][0];
+  const myRandomImageAlt=myArry[myRandomIdex][1];
+  
   myImage.setAttribute('src',myRandomImagePath);
   myImage.setAttribute('alt',myRandomImageAlt);
-});
+
+}
